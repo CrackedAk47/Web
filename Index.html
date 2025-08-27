@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAMF | Premium Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(120, 90, 40, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(120, 90, 40, 0.05) 0%, transparent 25%);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to bottom, #1a1a1a 0%, #0a0a0a 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 38px;
+            font-weight: bold;
+            background: linear-gradient(to right, #d4af37, #ffdb6e, #f5d067);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtitle {
+            font-size: 9px;
+            color: #d4af37;
+            margin-left: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 35px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #d4af37, #ffdb6e);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 100px;
+            text-align: center;
+            background: linear-gradient(rgba(10, 10, 10, 0.92), rgba(10, 10, 10, 0.92)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231a1a1a" width="100" height="100"/><path fill="%23d4af37" opacity="0.1" d="M0 0L100 100M100 0L0 100" stroke-width="0.5"/></svg>');
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+        }
+        
+        .hero:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+        }
+        
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 52px;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #d4af37, #ffdb6e, #d4af37);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1.5px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(to right, #d4af37, #b8941f);
+            color: #0a0a0a;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            z-index: 1;
+        }
+        
+        .cta-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+        }
+        
+        .cta-button:hover:before {
+            left: 100%;
+        }
+        
+        /* Courses Section */
+        .courses {
+            padding: 100px 0;
+            background-color: #111111;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #d4af37;
+            font-size: 38px;
+            position: relative;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+        }
+        
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 40px;
+        }
+        
+        .course-card {
+            background: linear-gradient(to bottom, #1a1a1a, #151515);
+            border: 1px solid #2a2a2a;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+        
+        .course-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #d4af37, #b8941f);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        .course-card:hover:before {
+            opacity: 1;
+        }
+        
+        .course-image {
+            height: 200px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231a1a1a" width="100" height="100"/><path fill="%23d4af37" opacity="0.1" d="M0 0L100 100M100 0L0 100" stroke-width="0.5"/></svg>');
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-image i {
+            font-size: 60px;
+            color: #d4af37;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            z-index: 2;
+        }
+        
+        .course-content {
+            padding: 25px;
+        }
+        
+        .course-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #d4af37;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .course-desc {
+            color: #aaaaaa;
+            margin-bottom: 25px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .course-price {
+            font-size: 26px;
+            font-weight: bold;
+            color: #d4af37;
+            text-align: right;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: #0a0a0a;
+            position: relative;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 40px;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(to bottom, #1a1a1a, #151515);
+            border: 1px solid #2a2a2a;
+            border-radius: 15px;
+            padding: 35px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.15);
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            font-size: 70px;
+            color: #d4af37;
+            opacity: 0.15;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            color: #cccccc;
+            margin-bottom: 25px;
+            font-style: italic;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial-author {
+            color: #d4af37;
+            font-weight: 600;
+            text-align: right;
+            font-size: 16px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            border-top: 1px solid #2a2a2a;
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(to right, #d4af37, #ffdb6e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 35px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-links a {
+            color: #d4af37;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            position: relative;
+        }
+        
+        .footer-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-links a:hover:after {
+            width: 100%;
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        /* Decorative Elements */
+        .decoration {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #d4af37;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .decoration-1 {
+            top: 20%;
+            left: 10%;
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite;
+        }
+        
+        .decoration-2 {
+            bottom: 10%;
+            right: 15%;
+            transform: rotate(45deg);
+            animation: float 18s ease-in-out infinite;
+        }
+        
+        .decoration-3 {
+            top: 60%;
+            left: 5%;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: float 12s ease-in-out infinite;
+            width: 150px;
+            height: 150px;
+        }
+        
+        .decoration-4 {
+            top: 15%;
+            right: 8%;
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+            width: 100px;
+            height: 100px;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                transform: translate(10px, 15px) rotate(5deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+        }
+        
+        /* Page Content */
+        .page-content {
+            display: none;
+            padding: 80px 0;
+            min-height: 60vh;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .page-content h2 {
+            color: #d4af37;
+            margin-bottom: 40px;
+            font-size: 36px;
+            font-family: 'Cinzel', serif;
+            text-align: center;
+        }
+        
+        .page-content h3 {
+            color: #d4af37;
+            margin: 30px 0 15px;
+            font-size: 24px;
+        }
+        
+        .page-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: #cccccc;
+            font-size: 16px;
+        }
+        
+        .page-content ul {
+            margin-left: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .page-content li {
+            margin-bottom: 12px;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 968px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 25px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 8px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+                padding: 0 15px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .course-grid, .testimonial-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .cta-button {
+                padding: 15px 30px;
+            }
+            
+            .logo-text {
+                font-size: 30px;
+            }
+        }
+        
+        /* Gold accent elements */
+        .gold-accent {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            opacity: 0.5;
+        }
+        
+        /* Fancy bullet points */
+        .fancy-bullet {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .fancy-bullet li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .fancy-bullet li:before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative background elements -->
+    <div class="decoration decoration-1"></div>
+    <div class="decoration decoration-2"></div>
+    <div class="decoration decoration-3"></div>
+    <div class="decoration decoration-4"></div>
+    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-text">BAMF</div>
+                    <div class="logo-subtitle">BROKE ASS MONKEYS FOUNDATION</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                        <li><a href="#" class="nav-link" data-page="testimonials">Success Stories</a></li>
+                        <li><a href="#" class="nav-link" data-page="terms">Terms</a></li>
+                        <li><a href="#" class="nav-link" data-page="privacy">Privacy</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Home Page -->
+        <section id="home-page" class="page-content">
+            <section class="hero">
+                <div class="container">
+                    <h1>TRANSFORM YOUR BROKE ASS LIFE</h1>
+                    <p>These are the EASIEST ways you can start earning money without actually doing any real work!</p>
+                    <a href="#" class="cta-button">START YOUR JOURNEY</a>
+                </div>
+            </section>
+            
+            <section class="courses">
+                <div class="container">
+                    <h2 class="section-title">OUR PREMIUM COURSES</h2>
+                    <div class="course-grid">
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-dollar-sign fa-3x"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">The Bhikari Tactic</h3>
+                                <p class="course-desc">Learn how to earn money just by sitting or doing your hobby. PERFECT for arts students. We will provide kits and lines you can repeat to gain TONS OF SYMPATHY AND ATTENTION.</p>
+                                <div class="course-price">₹10,000</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-chart-line fa-3x"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">The Hijda Tactic</h3>
+                                <p class="course-desc">DISGUISE yourself as a girl and start an OF. We will provide the blueprints so you can earn CRAZY MONEY. We provide sponserships, managers and we will make sure you reach TOP 10.</p>
+                                <div class="course-price">₹20,000</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-gem fa-3x"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">The TOPA Tactic</h3>
+                                <p class="course-desc">In this course, we will teach you how you can make your very own workshop. So you can start selling your crazy amount of knowledge as courses and we WILL provide advertisement for it aswell.</p>
+                                <div class="course-price">₹15,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="testimonials">
+                <div class="container">
+                    <h2 class="section-title">SUCCESS STORIES</h2>
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"I was literally eating from garbage cans before BAMF. Now I eat luxurious seafood! The Bhikari Tactic taught me how to cry on command for maximum sympathy profits."</p>
+                            <p class="testimonial-author">- Raju, Professional Beggar</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"The Hijda Tactic changed my life! I went from being an unemployed engineer to a highly sought-after online 'goddess'. My parents don't talk to me anymore, but my wallet has never been thicker (not as much as me tho ;) )!"</p>
+                            <p class="testimonial-author">- Priyanka (formerly Piyush)</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"Thanks to the TOPA Tactic, I now run 17 different workshops teaching things I literally don't know shit about! My students are even more confused than I am, but they keep paying!"</p>
+                            <p class="testimonial-author">- Dr. Sharma, Expert in Everything</p>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 40px;">
+                        <a href="#" class="cta-button nav-link" data-page="testimonials">MORE SUCCESS STORIES</a>
+                    </div>
+                </div>
+            </section>
+        </section>
+        
+        <!-- About Page -->
+        <section id="about-page" class="page-content">
+            <div class="container">
+                <h2>ABOUT BROKE ASS MONKEYS FOUNDATION</h2>
+                <p>Founded in 2025 by a group of entrepreneurs who realized it's easier to sell dreams than to achieve them, BAMF is dedicated to separating you from your money with the least amount of effort possible.</p>
+                
+                <p>Our mission is simple: to provide completely unrealistic financial expectations to desperate individuals who should probably know better but are willing to try anything for a quick rupee.</p>
+                
+                <h3>MEET OUR "EXPERTS"</h3>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <h3 class="course-title">Ricky Bhai</h3>
+                        <p class="testimonial-text">Former street-smart hustler who turned his talent for convincing people into a multi-course empire. His expertise includes making things up and speaking with extreme confidence.</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <h3 class="course-title">"Miss" Beautiful</h3>
+                        <p class="testimonial-text">A former Instagram influencer who gained fame by photoshopping himself into a female. He now teaches others how to create entirely fabricated online personas.</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <h3 class="course-title">Guru Ji</h3>
+                        <p class="testimonial-text">A self-proclaimed spiritual guide who discovered that enlightenment is much more profitable when sold in monthly installments. His catchphrase is "The secret to wealth is giving me yours."</p>
+                    </div>
+                </div>
+                
+                <h3>OUR "PHILOSOPHY"</h3>
+                <p>We believe that anyone can become rich if they're willing to repeat the wise words of Sourav Joshi's grandma:</p>
+                <ul class="fancy-bullet">
+                    <li>AREY</li>
+                    <li>TERI</li>
+                    <li>MAA</li>
+                    <li>KA</li>
+                    <li>[REDACTED]</li>
+                </ul>
+                
+                <p>At BAMF, we're not just a company - we're a community of like-minded individuals who have all made the excellent decision to give us their money. Join us today! (Rajesh idhar link daalna)</p>
+            </div>
+        </section>
+        
+        <!-- Testimonials Page -->
+        <section id="testimonials-page" class="page-content">
+            <div class="container">
+                <h2>SUCCESS STORIES FROM OUR STUDENTS</h2>
+                <p>Read these amazing TOTALLY verified stories from people who gave us money and then eventually figured things out on their own!</p>
+                
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I was ₹50,000 in debt when I found BAMF. After taking their courses, I'm now ₹1,50,000 in debt but with much more interesting excuses for my creditors!"</p>
+                        <p class="testimonial-author">- Vijay, Debt Appreciator</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The 'Fake It Till You Make It' in the TOPA course taught me how to confidently give business advice despite having never run a successful business. I've convinced 3 people to pay me for consulting!"</p>
+                        <p class="testimonial-author">- Business Babu</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I used to have a respectable job that actually contributed to society. Now I'm a 'digital entrepreneur' who sells e-books about productivity while watching Netflix all day. Thanks BAMF!"</p>
+                        <p class="testimonial-author">- Viraj, Productivity Expert</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"After taking the 'Influencer Mastery' in the TOPA course, I now have 12,000 followers! Sure, 11,900 are bots I paid for, but those 100 real people are very engaged with my content about engagement."</p>
+                        <p class="testimonial-author">- Social Amaan</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I purchased all three courses and my life is completely unchanged except I'm poorer. But the motivational emails telling me it's my fault for 'not implementing correctly' keep me going!"</p>
+                        <p class="testimonial-author">- Still Hopeful Ramesh</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The courses didn't really help me make money, but they did help me lower my expectations to the point where my current financial situation seems acceptable. That's a win in my book!"</p>
+                        <p class="testimonial-author">- aur naam yaad nahi aara</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Terms Page -->
+        <section id="terms-page" class="page-content">
+            <div class="container">
+                <h2>TERMS OF SERVICE</h2>
+                <p><strong>Last Updated: Never (We don't believe in updates)</strong></p>
+                
+                <p>Welcome to Broke Ass Monkeys Foundation! By giving us your money, you agree to the following terms:</p>
+                
+                <h3>1. NO REFUNDS. EVER.</h3>
+                <p>All sales are final. Once we have your money, it becomes our money. Attempting to request a refund will result in us laughing at your pathetic attempt to get your money back.</p>
+                
+                <h3>2. RESULTS NOT GUARANTEED (OR EVEN LIKELY)</h3>
+                <p>We promise nothing except that we will take your money. Any results you achieve are purely coincidental and definitely not because of our courses. If you fail, it's your fault. If you succeed, we'll take credit.</p>
+                
+                <h3>3. INTELLECTUAL NON-PROPERTY</h3>
+                <p>All content is stolen from other people who actually know what they're talking about. You agree not to notice this or mention it to anyone.</p>
+                
+                <h3>4. PRIVACY (JUST KIDDING)</h3>
+                <p>We will sell your data to anyone willing to pay for it. You agree to receive endless spam emails, robocalls, and possibly a visit from our "motivational consultants" if you fall behind on payments.</p>
+                
+                <h3>5. ARBITRATION</h3>
+                <p>Any disputes will be settled by a coin flip. The coin is ours, and we've practiced extensively to ensure it always lands on our side.</p>
+                
+                <h3>6. COURSE ACCESS</h3>
+                <p>You get access to our courses until we decide to take them down, which is usually about 2 weeks after purchase. After that, you'll need to pay for "lifetime access" which lasts until we decide to charge again.</p>
+                
+                <p>By purchasing our courses, you acknowledge that you have read, understood, and agreed to be bound by these terms that nobody actually reads.</p>
+            </div>
+        </section>
+        
+        <!-- Privacy Page -->
+        <section id="privacy-page" class="page-content">
+            <div class="container">
+                <h2>PRIVACY POLICY</h2>
+                <p><strong>We Value Your Data (Because We Sell It)</strong></p>
+                
+                <p>At Broke Ass Monkeys Foundation, we care deeply about your personal information. Specifically, we care about how much we can sell it for to third parties.</p>
+                
+                <h3>INFORMATION WE COLLECT</h3>
+                <p>We collect everything we can get our hands on:</p>
+                <ul class="fancy-bullet">
+                    <li>Your name, email, and payment information (so we can charge you repeatedly)</li>
+                    <li>Your browsing history (to find more things to sell you)</li>
+                    <li>Your deepest fears and insecurities (to better manipulate you into buying)</li>
+                    <li>Your social security number (for "verification purposes")</li>
+                    <li>Your mother's info and relationship status (because why not?)</li>
+                </ul>
+                
+                <h3>HOW WE USE YOUR INFORMATION</h3>
+                <p>We use your information in several innovative ways:</p>
+                <ul class="fancy-bullet">
+                    <li>Sell it to the highest bidder</li>
+                    <li>Blackmail you if you become successful using our methods</li>
+                    <li>Create fake testimonials using your identity</li>
+                    <li>Sign you up for every newsletter known to mankind</li>
+                    <li>Practice our data hoarding skills</li>
+                </ul>
+                
+                <h3>COOKIES</h3>
+                <p>Accept our cookies chup chaap fatass..</p>
+                
+                <h3>DATA RETENTION</h3>
+                <p>We keep your data forever, even after you die. We'll probably try to sell courses to your friends and family too.</p>
+                
+                <h3>YOUR RIGHTS</h3>
+                <p>You have the right to:</p>
+                <ul class="fancy-bullet">
+                    <li>Ask us what data we have on you (we won't tell you)</li>
+                    <li>Request we delete your data (we won't)</li>
+                    <li>Opt out of marketing emails (by deleting your internet existence)</li>
+                </ul>
+                
+                <p>By using our site, you consent to this privacy policy and all future policies we decide to create without telling you.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">BAMF</div>
+                <div class="footer-links">
+                    <a href="#" class="nav-link" data-page="terms">Terms of Service</a>
+                    <a href="#" class="nav-link" data-page="privacy">Privacy Policy</a>
+                    <a href="mailto:help@bamf.fake">Contact Us (Don't Actually)</a>
+                    <a href="#">Refund Policy (Spoiler: None)</a>
+                </div>
+                <p class="copyright">© 2025 Broke Ass Monkeys Foundation. All rights reserved, just like your money.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple animation for elements when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe course cards and testimonials
+            document.querySelectorAll('.course-card, .testimonial-card').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Page navigation
+            const pages = document.querySelectorAll('.page-content');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            // Show home page by default
+            document.getElementById('home-page').style.display = 'block';
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page') + '-page';
+                    
+                    // Hide all pages
+                    pages.forEach(page => {
+                        page.style.display = 'none';
+                    });
+                    
+                    // Show selected page
+                    document.getElementById(pageId).style.display = 'block';
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
